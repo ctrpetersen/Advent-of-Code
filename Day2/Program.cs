@@ -277,26 +277,16 @@ namespace Day2
 
             foreach (var crate in crates)
             {
-                var twoLetters = crate.ToCharArray()
+                if (crate.ToCharArray()
                     .GroupBy(x => x)
-                    .Any(g => g.Count() == 2);
+                    .Any(g => g.Count() == 2)){twoLettersAmount++;}
 
-                var threeLetters = crate.ToCharArray()
+                if (crate.ToCharArray()
                     .GroupBy(x => x)
-                    .Any(g => g.Count() == 3);
-
-                if (twoLetters)
-                {
-                    twoLettersAmount++;
-                }
-
-                if (threeLetters)
-                {
-                    threeLettersAmount++;
-                }
+                    .Any(g => g.Count() == 3)){threeLettersAmount++;}
             }
-
             Console.WriteLine(twoLettersAmount * threeLettersAmount);
+            Console.WriteLine($"{twoLettersAmount} - {threeLettersAmount}");
         }
 
 
