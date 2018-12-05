@@ -262,12 +262,19 @@ namespace Day2
             "asgwjcmxrkedihqoutfyivzpmx"
         };
 
-        private static int twoLettersAmount = 0;
-        private static int threeLettersAmount = 0;
-
         static void Main(string[] args)
         {
-            
+            PartOne();
+            PartTwo();
+
+            Console.ReadKey();
+        }
+
+        static void PartOne()
+        {
+            int twoLettersAmount = 0;
+            int threeLettersAmount = 0;
+
             foreach (var crate in crates)
             {
                 var twoLetters = crate.ToCharArray()
@@ -290,8 +297,41 @@ namespace Day2
             }
 
             Console.WriteLine(twoLettersAmount * threeLettersAmount);
+        }
 
-            Console.ReadKey();
+
+        static void PartTwo()
+        {
+            foreach (string crate in crates)
+            {
+                foreach (string crateToCompareTo in crates)
+                {
+                    int differingChars = 0;
+
+                    for (int i = 0; i < crateToCompareTo.Length; i++)
+                    {
+                        if (crate[i] != crateToCompareTo[i])
+                        {
+                            differingChars++;
+                        }
+                    }
+
+                    if (differingChars == 1)
+                    {
+                        string diff = "";
+                        for (int i = 0; i < crateToCompareTo.Length; i++)
+                        {
+                            if (crate[i] == crateToCompareTo[i])
+                            {
+                                diff += crate[i];
+                            }
+                        }
+
+                        Console.WriteLine(diff);
+                        return;
+                    }
+                }
+            }
         }
     }
 }
