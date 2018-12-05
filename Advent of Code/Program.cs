@@ -1026,9 +1026,21 @@ namespace AdventOfCode
             -16,
             -140560
         };
+
         private static List<int> freqs = new List<int>();
 
         static void Main(string[] args)
+        {
+            PartOne();
+            PartTwo();
+        }
+
+        static void PartOne()
+        {
+            Console.WriteLine(input.Sum());
+        }
+
+        static void PartTwo()
         {
             int freq = 0;
             bool dupe = false;
@@ -1048,11 +1060,9 @@ namespace AdventOfCode
                         break;
                     }
                 }
-
             }
 
-
-            Console.ReadKey();
+            Console.WriteLine(freq);
         }
     }
 }
